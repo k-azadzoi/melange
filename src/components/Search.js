@@ -14,6 +14,13 @@ const styles = (theme) => ({
     menuButton: {
       marginRight: theme.spacing(2),
     },
+    appBar:{
+        backgroundColor: '#9C4421',
+        color: '#F7FAFC',
+    },
+    button:{
+        color: '#F7FAFC',
+    },
     title: {
       flexGrow: 1,
       display: 'none',
@@ -48,9 +55,8 @@ const styles = (theme) => ({
       color: 'inherit',
     },
     inputInput: {
-      padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
-      paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+     
+      paddingLeft: `calc(1em + ${theme.spacing(1)}px)`,
       transition: theme.transitions.create('width'),
       width: '100%',
       [theme.breakpoints.up('sm')]: {
@@ -65,7 +71,7 @@ const styles = (theme) => ({
 const Search = ({ classes, searchValue, onChange, onSearch, onKeyPress }) => {
     return (
         <div className={classes.root}>
-            <AppBar>
+            <AppBar className={classes.appBar}>
                 <Toolbar>
                 <IconButton
                     edge="start"
@@ -89,7 +95,7 @@ const Search = ({ classes, searchValue, onChange, onSearch, onKeyPress }) => {
                             onChange={onChange}
                             onKeyPress={onKeyPress}
                         />
-                        <Button type='submit' onClick={onSearch}>Search</Button>
+                        <Button className={classes.button} type='submit' onClick={onSearch}>Search</Button>
                  </div>
                 </Toolbar>
             </AppBar>

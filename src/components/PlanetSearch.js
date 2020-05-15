@@ -8,7 +8,7 @@ const SEARCH = gql`
 query Search($match: String) {
     planets(order_by: { name: asc }, where: { name: { _ilike: $match }}) {
       name
-      image
+      imageUrl
       inhabitants
       id
     }
