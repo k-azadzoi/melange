@@ -1,6 +1,7 @@
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
+import Container from '@material-ui/core/Container';
 import GridList from '@material-ui/core/GridList';
 import Grid from '@material-ui/core/Grid';
 import GridListTile from '@material-ui/core/GridListTile';
@@ -17,11 +18,15 @@ const styles = (theme) => ({
   },
   gridList: {
     width: 400,
-    paddingTop: 10,
+    paddingTop: 7,
+    paddingBottom: 5,
   },
   title: {
-      color: 'orange',
+      color: '#ED8936',
       fontSize: '24px'
+  },
+  planetGrid: {
+      
   },
   subtitle: {
       fontSize: '16px'
@@ -49,23 +54,25 @@ const Planets = ({ newPlanets, classes }) => {
     const renderPlanets = (planets) => {
         return planets.map(({ id, name, imageUrl, inhabitants }) => (
             <div key={id} className={classes.root}>
-                <Grid container>
-                        <Grid item xs={4}>
-                        <GridList cellHeight={260} cols={1} className={classes.gridList} >
-                            <GridListTile>
-                                    <img src={imageUrl} alt={name} />
-                                <GridListTileBar 
-                                    title={name}
-                                    subtitle={<span> {inhabitants} </span> }
-                                    classes={{
-                                        title: classes.title,
-                                        subtitle: classes.subtitle
-                                    }}
-                                />
-                            </GridListTile>  
-                        </GridList>   
+                <Container className={classes.planetGrid} maxWidth="md">
+                    <Grid container spacing={4}>
+                        <Grid item xs={12} sm={6} md={4}>
+                            <GridList cellHeight={260} cols={1} className={classes.gridList} >
+                                <GridListTile>
+                                        <img src={imageUrl} alt={name} />
+                                    <GridListTileBar 
+                                        title={name}
+                                        subtitle={<span> {inhabitants} </span> }
+                                        classes={{
+                                            title: classes.title,
+                                            subtitle: classes.subtitle
+                                        }}
+                                    />
+                                </GridListTile>  
+                            </GridList>   
                         </Grid>     
-                </Grid>                        
+                    </Grid> 
+                </Container>                       
             </div>
         ))
     }
