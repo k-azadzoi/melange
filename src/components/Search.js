@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -35,6 +36,7 @@ const styles = (theme) => ({
     inputRoot: {
       color: 'inherit',
     },
+    toolbar: theme.mixins.toolbar,
     inputInput: {
       paddingLeft: `calc(1em + ${theme.spacing(1)}px)`,
       transition: theme.transitions.create('width'),
@@ -51,10 +53,11 @@ const styles = (theme) => ({
 const Search = ({ classes, searchValue, onChange, onSearch, onKeyPress }) => {
     return (
         <div className={classes.root}>
+            <div className={classes.toolbar} />
             <AppBar className={classes.appBar}>
                 <Toolbar>
                 <Typography className={classes.title} variant="h6" noWrap>
-                    Melange
+                    <Link style={{color: 'inherit', textDecoration: 'inherit'}}to='/'> Melange </Link>
                 </Typography>
                 <div className={classes.search} >
                         <InputBase
@@ -71,8 +74,7 @@ const Search = ({ classes, searchValue, onChange, onSearch, onKeyPress }) => {
                         <Button className={classes.button} type='submit' onClick={onSearch}>Search</Button>
                  </div>
                 </Toolbar>
-            </AppBar>
-          
+            </AppBar>     
         </div>
     )
 }
