@@ -27,7 +27,6 @@ const PlanetSearch = () => {
                 onChange={(e) => setSearchValue(e.target.value)}
                 onSearch={() => search({ variables: { match: `%${searchValue}%` } })}
                 onKeyPress={(ev) => {
-                    console.log(`key pressed`)
                     if (ev.key === 'Enter'){
                         search({ variables: { match: `%${searchValue}%`}})
                         ev.preventDefault()

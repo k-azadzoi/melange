@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { gql } from 'apollo-boost'
-import { useQuery } from '@apollo/react-hooks'
+import { useQuery, useSubscription } from '@apollo/react-hooks'
 import Search from './Search'
 import Typography from '@material-ui/core/Typography'
 import List from '@material-ui/core/List';
@@ -8,7 +8,7 @@ import ListItem from '@material-ui/core/ListItem';
 
 
 const PLANET = gql`
-    query Planet($id: uuid!){
+    subscription Planet($id: uuid!){
         planets_by_pk(id: $id) {
         id
         imageUrl
@@ -27,7 +27,7 @@ const Planet = ({
         params: { id }
     },
 }) => {
-    const { loading, error, data } = useQuery(PLANET, { variables: { id } })
+    const { loading, error, data } = useSubscription(PLANET, { variables: { id } })
 
     if (loading) return <p>Loading...</p>
     if (error) return <p>Error :(</p>
