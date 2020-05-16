@@ -12,7 +12,7 @@ Check out an early build [here](https://melange.netlify.app)
 
 ### Setup
 
-> now install npm and bower packages
+> now install npm or yarn packages
 
 ```shell
 $ npm install

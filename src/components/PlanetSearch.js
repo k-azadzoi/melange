@@ -20,6 +20,8 @@ const PlanetSearch = () => {
     const [searchValue, setSearchValue] = useState('') 
     const [search, { loading, error, data }] = useLazyQuery(SEARCH)
 
+    if (loading) return <p>Loading...</p>
+    if (error) return <p>Error :( </p>
     return(
         <div>
             <Search 

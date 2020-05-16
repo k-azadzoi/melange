@@ -56,25 +56,24 @@ const Planets = ({ newPlanets, classes }) => {
 
     const renderPlanets = (planets) => {
         return planets.map(({ id, name, imageUrl, inhabitants }) => (
-            <div key={id} className={classes.root}>
-                
+            <div key={id} className={classes.root}>  
                 <Link to={`/planet/${id}`}>
                     <Container className={classes.planetGrid} maxWidth="md">
                         <Grid container spacing={4}>
                             <Grid item xs={12} sm={6} md={4}>
                                 <GridList cellHeight={260} spacing={1} cols={1} className={classes.gridList} >
-                                        <GridListTile>
-                                                <img src={imageUrl} alt={name} />
-                                    
-                                            <GridListTileBar 
-                                                title={name}
-                                                subtitle={<span> {inhabitants} </span> }
-                                                classes={{
-                                                    title: classes.title,
-                                                    subtitle: classes.subtitle
-                                                }}
-                                            />
-                                        </GridListTile>  
+                                    <GridListTile>
+                                            <img src={imageUrl} alt={name} />
+                                
+                                        <GridListTileBar 
+                                            title={name}
+                                            subtitle={<span> {inhabitants} </span> }
+                                            classes={{
+                                                title: classes.title,
+                                                subtitle: classes.subtitle
+                                            }}
+                                        />
+                                    </GridListTile>  
                                 </GridList>   
                             </Grid>     
                         </Grid> 
