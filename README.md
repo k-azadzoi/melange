@@ -26,7 +26,7 @@ $ yarn install
 * [GraphQL](https://graphql.org/) - Query language used
 * [Apollo](https://www.apollographql.com/) - For use to consume  GraphQL API 
 * [Hasura](https://hasura.io/) - Used to connect database with GraphQL backend
-
+* [Material UI](https://material-ui.com/) - Framework for styling
 
 
 ## Acknowledgments

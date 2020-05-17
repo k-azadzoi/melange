@@ -18,6 +18,7 @@ const httpLink = new HttpLink({
   uri: `https://${GRAPHQL_ENDPOINT}`,
 })
 
+//deploy to netlify didn't work, but added an s to ws in the uri link and it worked
 const wsLink = new WebSocketLink({
   uri: `wss://${GRAPHQL_ENDPOINT}`,
   options: {
