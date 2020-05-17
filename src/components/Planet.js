@@ -57,8 +57,6 @@ const Planet = ({
     const [newReview, setNewReview] = useState('')   
     const [addReview] = useMutation(ADD_REVIEW)
 
-    console.log(newReview)
-
     if (loading) return <p>Loading...</p>
     if (error) return <p>Error :(</p>
 
@@ -73,7 +71,13 @@ const Planet = ({
                 </Typography>
                 <img src={imageUrl} alt='planets'/>
             </div>
-                <form type='hidden' name='review' data-netlify='true'>
+                <form type='hidden' name='review' data-netlify='true' onSubmit={() => {
+                                    addReview({ variables: { id, body: newReview } })
+                                        .then(() => setNewReview(''))
+                                        .catch((e) => {
+                                            setNewReview(e.message)
+                                        })
+                                    }}>
                     <Grid container spacing={3}>
                         <Grid item md={6} xs={12}>
                             <TextField
@@ -85,13 +89,7 @@ const Planet = ({
                             >
                             </TextField>
                         </Grid>
-                    <Button className={classes.button} type='submit' onClick={() => {
-                                    addReview({ variables: { id, body: newReview } })
-                                        .then(() => setNewReview(''))
-                                        .catch((e) => {
-                                            setNewReview(e.message)
-                                        })
-                                }}>Submit</Button>
+                    <Button className={classes.button} type='submit'>Submit</Button>
                     </Grid>
                 </form>
                 <Divider/>
