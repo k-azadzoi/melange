@@ -48,7 +48,7 @@ const App = () => (
   <BrowserRouter>
     <ApolloProvider client={client}>
       <Switch>
-        <Route exact path='/planet/:id' component={Planet}/>
+        <Route path='/planet/:id' component={Planet}/>
         <Route path='/' component={PlanetSearch}/>
       </Switch>
     </ApolloProvider>
