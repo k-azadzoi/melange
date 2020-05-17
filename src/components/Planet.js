@@ -73,7 +73,7 @@ const Planet = ({
                 </Typography>
                 <img src={imageUrl} alt='planets'/>
             </div>
-                <form name='review' data-netlify='true'>
+                <form type='hidden' name='review' data-netlify='true'>
                     <Grid container spacing={3}>
                         <Grid item md={6} xs={12}>
                             <TextField
