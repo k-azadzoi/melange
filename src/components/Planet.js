@@ -73,13 +73,7 @@ const Planet = ({
                 </Typography>
                 <img src={imageUrl} alt='planets'/>
             </div>
-                <form onSubmit={() => {
-                                    addReview({ variables: { id, body: newReview } })
-                                        .then(() => setNewReview(''))
-                                        .catch((e) => {
-                                            setNewReview(e.message)
-                                        })
-                                }}>
+                <form name='review' data-netlify='true'>
                     <Grid container spacing={3}>
                         <Grid item md={6} xs={12}>
                             <TextField
@@ -88,11 +82,16 @@ const Planet = ({
                                 variant='outlined'
                                 value={newReview}
                                 onChange={(e) => setNewReview(e.target.value)}
-                                
                             >
                             </TextField>
                         </Grid>
-                    <Button className={classes.button} type='submit'>Submit</Button>
+                    <Button className={classes.button} type='submit' onClick={() => {
+                                    addReview({ variables: { id, body: newReview } })
+                                        .then(() => setNewReview(''))
+                                        .catch((e) => {
+                                            setNewReview(e.message)
+                                        })
+                                }}>Submit</Button>
                     </Grid>
                 </form>
                 <Divider/>
