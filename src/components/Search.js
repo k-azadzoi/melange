@@ -42,9 +42,9 @@ const styles = (theme) => ({
       transition: theme.transitions.create('width'),
       width: '100%',
       [theme.breakpoints.up('sm')]: {
-        width: '12ch',
+        width: '20ch',
         '&:focus': {
-          width: '20ch',
+          width: '30ch',
         },
       },
     },
@@ -62,7 +62,7 @@ const Search = ({ classes, searchValue, onChange, onSearch, onKeyPress }) => {
                 <div className={classes.search} >
                         <InputBase
                             id='input'
-                            placeholder="Search…"
+                            placeholder="Planet search..."
                             classes={{
                                 root: classes.inputRoot,
                                 input: classes.inputInput,
