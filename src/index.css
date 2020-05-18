@@ -8,9 +8,24 @@ body {
   font-size: 2.4rem;
   display: flex;
   justify-content: center;
+  background-color: #E2E8F0;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+#title {
+  font-family: 'Megrim', cursive;
+  font-size: 40px;
+  text-transform: uppercase;
+  text-shadow: -.08em .08em #090D27;
+}
+
+#button {
+  font-family: 'Megrim', cursive;
+  font-size: 24px;
+  text-transform: uppercase;
+  text-shadow: -.08em .08em #090D27;
 }

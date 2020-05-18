@@ -56,11 +56,12 @@ const Search = ({ classes, searchValue, onChange, onSearch, onKeyPress }) => {
             <div className={classes.toolbar} />
             <AppBar className={classes.appBar}>
                 <Toolbar>
-                <Typography className={classes.title} variant="h6" noWrap>
+                <Typography id='title' className={classes.title} variant="h6" noWrap>
                     <Link style={{color: 'inherit', textDecoration: 'inherit'}}to='/'> Melange </Link>
                 </Typography>
                 <div className={classes.search} >
                         <InputBase
+                            id='input'
                             placeholder="Search…"
                             classes={{
                                 root: classes.inputRoot,
@@ -71,7 +72,7 @@ const Search = ({ classes, searchValue, onChange, onSearch, onKeyPress }) => {
                             onChange={onChange}
                             onKeyPress={onKeyPress}
                         />
-                        <Button className={classes.button} type='submit' onClick={onSearch}>Search</Button>
+                        <Button id='button' className={classes.button} type='submit' onClick={onSearch}>Search</Button>
                  </div>
                 </Toolbar>
             </AppBar>     

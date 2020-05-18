@@ -62,6 +62,17 @@ const Planet = ({
 
     const { name, imageUrl, inhabitants, reviews } = data.planets_by_pk
 
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        addReview({
+            variables: {id, body: newReview}
+        })
+        .then(() => setNewReview(''))
+        .catch((e) =>{
+            setNewReview(e.message)
+        })
+    }
+    
     return(
         <div className={classes.root}>
             <Search />
@@ -71,13 +82,7 @@ const Planet = ({
                 </Typography>
                 <img src={imageUrl} alt='planets'/>
             </div>
-                <form type='hidden' name='review' data-netlify='true' onSubmit={() => {
-                                    addReview({ variables: { id, body: newReview } })
-                                        .then(() => setNewReview(''))
-                                        .catch((e) => {
-                                            setNewReview(e.message)
-                                        })
-                                    }}>
+                <form onSubmit={handleSubmit}>
                     <Grid container spacing={3}>
                         <Grid item md={6} xs={12}>
                             <TextField
@@ -92,7 +97,6 @@ const Planet = ({
                     <Button className={classes.button} type='submit'>Submit</Button>
                     </Grid>
                 </form>
-                <Divider/>
             <List >
                 {reviews.map((review) => (
                     <ListItem key={review.id}> {review.body}</ListItem>
