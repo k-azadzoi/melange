@@ -2,7 +2,7 @@
 
 Leave reviews about your favorite Dune planets! 
 
-Check out an early build [here](https://melange.netlify.app)
+Check out an early build [here](http://melange-dune.herokuapp.com/)
 
 ## Getting Started
 
