@@ -17,8 +17,7 @@ const styles = (theme) => ({
     flexWrap: 'wrap',
     overflow: 'hidden',
     margin: 0,
-    padding: theme.spacing(2),
-    backgroundColor: "#E2E8F0",  
+    padding: theme.spacing(2), 
   },
   gridList: {
     width: 400,

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { gql } from 'apollo-boost'
 import { useSubscription, useMutation } from '@apollo/react-hooks'
-import { fade, ThemeProvider, createMuiTheme, withStyles } from '@material-ui/core/styles'
+import { withStyles } from '@material-ui/core/styles'
 import Search from './Search'
 import TextField from '@material-ui/core/TextField'
 import CssBaseline from '@material-ui/core/CssBaseline';
