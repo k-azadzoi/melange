@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { gql } from 'apollo-boost'
 import { useSubscription, useMutation } from '@apollo/react-hooks'
-import { withStyles } from '@material-ui/core/styles'
+import { fade, ThemeProvider, createMuiTheme, withStyles } from '@material-ui/core/styles'
 import Search from './Search'
-import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
@@ -25,6 +24,9 @@ const styles = (theme) => ({
             margin: theme.spacing(1),
             width: '44ch',
           },
+        '& label.Mui-focused': {
+            color: '#9C4421',
+        },
     },
     planetInfo: {
         textAlign: 'center',
@@ -45,7 +47,18 @@ const styles = (theme) => ({
 		width: '100%',
         marginTop: theme.spacing(1),
         textAlign: 'center',
-	},
+    },
+    cssFocused: {
+        color: '#9C4421',
+    },
+    cssOutlineInput: {
+        '&$cssFocused $notchedOutline': {
+            borderColor: '#9C4421',
+        }
+    },
+    notchedOutline: {
+        
+    },
 });
 
 const PLANET = gql`
@@ -114,7 +127,14 @@ const Planet = ({
                         <TextField
                             label='Enter a Review'
                             name='body'
-                            variant='outlined'
+                            variant='outlined'   
+                            InputProps={{
+                                classes: {
+                                    root: classes.cssOutlineInput,
+                                    focused: classes.cssFocused,
+                                    notchedOutline: classes.notchedOutline,
+                                },
+                            }}
                             inputRef={register({ required: true })}
                             multiline
                             rows={4}
@@ -124,7 +144,9 @@ const Planet = ({
                         >
                         </TextField> 
                         <br/>
-                        {errors.body && "Body is required"}
+                        <div>
+                            {errors.body && "Please enter a review"}
+                        </div>
                         <Button className={classes.button} type='submit'>Submit</Button>
                     </form>
                 <List >
