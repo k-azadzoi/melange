@@ -7,6 +7,7 @@ import GridList from '@material-ui/core/GridList';
 import Grid from '@material-ui/core/Grid';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
+import Spinner from './Spinner'
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = (theme) => ({
@@ -92,7 +93,7 @@ const Planets = ({ newPlanets, classes }) => {
         ))
     }
 
-    if (loading) return <p>Loading...</p>
+    if (loading) return <Spinner />
     if (error) return <p>Error :( </p>
 
     return <div>{renderPlanets(newPlanets || data.planets)}</div>

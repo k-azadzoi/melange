@@ -3,6 +3,7 @@ import Planets from './Planets'
 import Search from './Search'
 import { gql } from 'apollo-boost';
 import { useLazyQuery } from '@apollo/react-hooks';
+import Spinner from './Spinner'
 
 const SEARCH = gql`
 query Search($match: String) {
@@ -20,7 +21,7 @@ const PlanetSearch = () => {
     const [searchValue, setSearchValue] = useState('') 
     const [search, { loading, error, data }] = useLazyQuery(SEARCH)
 
-    if (loading) return <p>Loading...</p>
+    if (loading) return <Spinner />
     if (error) return <p>Error :( </p>
     return(
         <div>

@@ -12,6 +12,7 @@ import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
+import Spinner from './Spinner'
 import { useForm } from 'react-hook-form'
 
 const styles = (theme) => ({
@@ -82,7 +83,7 @@ const Planet = ({
     const [newReview, setNewReview] = useState('')   
     const [addReview] = useMutation(ADD_REVIEW)
 
-    if (loading) return <p>Loading...</p>
+    if (loading) return <Spinner />
     if (error) return <p>Error :(</p>
 
     const { name, imageUrl, inhabitants, reviews } = data.planets_by_pk
