@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import { Link } from 'react-router-dom'
@@ -12,24 +12,24 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = (theme) => ({
   root: {
-    flexGrow: 1,
     display: 'flex',
     flexWrap: 'wrap',
-    overflow: 'hidden',
-    margin: 0,
+    justifyContent: 'center',
     padding: theme.spacing(2), 
   },
   gridList: {
     width: 400,
+    height: 'auto',
     paddingTop: 10,
     paddingBottom: 5,
+    overFlowY: 'auto',
   },
   title: {
       color: '#ED8936',
       fontSize: '24px'
   },
   planetGrid: {
-      
+   
   },
   subtitle: {
       fontSize: '16px',
@@ -65,29 +65,28 @@ const Planets = ({ newPlanets, classes }) => {
 
     const renderPlanets = (planets) => {
         return planets.map(({ id, name, imageUrl, inhabitants }) => (
-            <div key={id} className={classes.root}>  
+            <div key={id}>  
+            <Container>
               <Link to={`/planet/${id}`}>
-                  <Container className={classes.planetGrid} maxWidth="md">
-                      <Grid container spacing={4}>
-                          <Grid item xs={12} sm={6} md={4}>
-                              <GridList cellHeight={260} spacing={1} cols={1} className={classes.gridList} >
-                                  <GridListTile>
-                                          <img src={imageUrl} alt={name}/>
-                                      
-                                      <GridListTileBar 
-                                          title={name}
-                                          subtitle={<span> {inhabitants} </span> }
-                                          classes={{
-                                              title: classes.title,
-                                              subtitle: classes.subtitle
-                                          }}
-                                      />
-                                  </GridListTile>  
-                              </GridList>
-                          </Grid>     
-                      </Grid> 
-                  </Container>    
+                <Grid container>
+                    <Grid>
+                        <GridList md={3} cellHeight={260} cols={1} className={classes.gridList} >
+                            <GridListTile>
+                                    <img src={imageUrl} alt={name}/>
+                                <GridListTileBar 
+                                    title={name}
+                                    subtitle={<span> {inhabitants} </span> }
+                                    classes={{
+                                        title: classes.title,
+                                        subtitle: classes.subtitle
+                                    }}
+                                />
+                            </GridListTile>  
+                        </GridList>
+                    </Grid>     
+                </Grid> 
               </Link>                     
+            </Container>    
             </div>
         ))
     }
@@ -95,7 +94,7 @@ const Planets = ({ newPlanets, classes }) => {
     if (loading) return <Spinner />
     if (error) return <p>Error :( </p>
 
-    return <div>{renderPlanets(newPlanets || data.planets)}</div>
+    return <div className={classes.root}>{renderPlanets(newPlanets || data.planets)}</div>
 }
 
 export default withStyles(styles)(Planets)

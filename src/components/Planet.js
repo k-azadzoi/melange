@@ -12,6 +12,8 @@ import Typography from '@material-ui/core/Typography'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import Spinner from './Spinner'
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
 import { useForm } from 'react-hook-form'
 
 const styles = (theme) => ({
@@ -48,6 +50,13 @@ const styles = (theme) => ({
         marginTop: theme.spacing(1),
         textAlign: 'center',
     },
+    gridList: {
+        width: 400,
+        height: 'auto',
+        paddingTop: 10,
+        paddingBottom: 5,
+        overFlowY: 'auto',
+      },
     cssFocused: {
         color: '#9C4421',
     },
@@ -59,6 +68,7 @@ const styles = (theme) => ({
     notchedOutline: {
         
     },
+    toolbar: theme.mixins.toolbar,
 });
 
 const PLANET = gql`
@@ -116,11 +126,19 @@ const Planet = ({
             <CssBaseline />
             <Search />
             <div className={classes.root}>
+            
                 <div className={classes.planetInfo}>
-                    <Typography id='planet-name' variant="h3" className={classes.planetText}>
-                        {name} 
-                    </Typography>
-                    <img src={imageUrl} alt='planets'/>
+                <Typography id='planet-name' variant="h3" className={classes.planetText}>
+                                {name} 
+                        </Typography>  
+               
+                    <GridList cellHeight={280} cols={1} className={classes.gridList} > 
+                        
+                        <GridListTile>
+                                <img src={imageUrl} alt='planets'/>    
+                        </GridListTile>  
+                    </GridList>          
+                   
                 </div>
                 <Divider />
                     <form className={classes.form} noValidate onSubmit={handleSubmit(handleReviewSubmit)}>
