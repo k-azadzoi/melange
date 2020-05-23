@@ -30,3 +30,4 @@ $ yarn install
 
 
 ## Acknowledgments
+[Sezgi Ulucam](https://hasura.io/blog/@sez/)
